@@ -1,3 +1,6 @@
 {
-  "isInited": false
+  "isInited": true,
+  "serverUrl": "http://106.12.91.95:6688/api/fileUpload",
+  "folderPath": "/Users/zhaoxiaoqiang/Desktop/test",
+  "extname": ".jpeg,.png"
 }
