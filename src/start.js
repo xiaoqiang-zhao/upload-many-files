@@ -24,7 +24,6 @@ module.exports = {
      */
     async pipe(program) {
         if (program.start) {
-            
             // 读取配置文件
             let configContent = await fsPromises.readFile(configPath);
             const config = JSON.parse(configContent);
