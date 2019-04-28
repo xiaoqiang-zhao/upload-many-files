@@ -23,11 +23,6 @@ upload-many-files start
 ```
 上传的逻辑是先扫面全部需要上传的文件，将每个需要上传的文件生成一条上传任务，写入 data/jobs.json 
 
-暂停上传
-```shell
-upload-many-files stop
-```
-
 查看配置
 ```shell
 upload-many-files get-config
