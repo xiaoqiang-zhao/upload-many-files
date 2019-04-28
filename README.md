@@ -49,3 +49,5 @@ setConfig.pipe(program);
 // 开始上传
 startUpload.pipe(program);
 ```
+
+每一个上传任务定义为一个 job，每 1000 个 job 定义为一个 jobsGroup。
