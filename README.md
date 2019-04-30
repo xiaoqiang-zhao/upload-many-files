@@ -38,7 +38,9 @@ upload-many-files report
 upload-many-files reset
 ```
 
-## 源码阅读 与 二次开发相关
+由于使用了 chalk 和 cli-spinner，在 Windows 的 cmd 下部分日志无法输出，建议使用自带的 PowerShell。
+
+## 辅助源码阅读 与 二次开发相关
 
 采用了管道模型来做控制，将判断逻辑放在了子模块中，便于加工和处理，
 
@@ -83,3 +85,31 @@ startUpload.pipe(program);
 
 - 4. 开始上传，内存中最多常驻 10 个异步任务，每成功一个任务从总任务中提取一个加入，直到全部上传完成。
 - 5. 在 jobsGroup 中记录文件上传的成功与失败，方便中断后续传。
+
+在二次开发中，你可能需要按自己的业务逻辑来定义上传成功和失败的逻辑，这个逻辑在 lib/start.js 的 postFile 方法中指定，例如:
+
+```js
+async function postFile(index, end) {
+    ...
+    request.post({
+        url: config.serverUrl,
+        formData
+    }, async (error, res, body) => {
+        // 如果有一些自定义的业务定义，可以在这里处理，比如下面就是自定义失败的处理
+        let isSuccess = false;
+        if (res.statusCode === 200 && body[0] === '{') {
+            body = JSON.parse(body);
+            isSuccess = body.data && body.data.success;
+        }
+        if (!error && res.statusCode === 200 && isSuccess) {
+            ...
+        }
+    });
+}
+```
+
+## 还存在的问题
+
+一批完全结束后才会开始下一批，效率上有提高的空间。一个优化是额外加一个失败重试队列，要包括重试文件的路径和所属上传批次，这样才能上传完成后更新记录的文件。重试次数不限量，如果接口修复后不需手动干预就可以继续上传。
+
+上传额外参数当前是硬编码，用参数的形式来指定: upload-many-files start --params a=b,c=d
