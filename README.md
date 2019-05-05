@@ -74,8 +74,8 @@ startUpload.pipe(program);
 ```json
 {
   "status": 1,
-  // 上传中的上传组编号，从 1 开始
-  "uploadingGroupIndex": 1,
+  // 上传已完成的上传组编号，从 0 开始
+  "uploadedGroupIndex": 0,
   "jobsTotal": 288,
   "currentJobsList": []
 }
