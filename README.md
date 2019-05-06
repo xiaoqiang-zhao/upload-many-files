@@ -14,7 +14,7 @@ $ npm install -g upload-many-files
 upload-many-files init --server-url http://xx.xx.xx --folder-path /home/user/xxx --extname .jpeg,.png
 ```
 - server-url，接收上传的服务。
-- folder-path，本地文件存储的文件夹，将对文件夹中的全部文件进行扫描。
+- folder-path，本地文件存储的文件夹，将对文件夹中的全部文件进行扫描，如果你是 Windows 记得加上盘符 D:\testqun。
 - extname，要上传文件的后缀。
 
 开始上传
