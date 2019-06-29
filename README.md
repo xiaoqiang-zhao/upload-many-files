@@ -28,11 +28,6 @@ upload-many-files-start
 upload-many-files-get-config
 ```
 
-查看上传报告
-```shell
-upload-many-files-report
-```
-
 将设置回归到安装初始化状态
 ```shell
 upload-many-files-reset
@@ -42,7 +37,12 @@ upload-many-files-reset
 
 ## 辅助源码阅读 与 二次开发相关
 
-采用了管道模型来做控制，将判断逻辑放在了子模块中，便于加工和处理，
+支持两种模式: 
+
+- 参数形式: upload-many-files init --server-url http://xx.xx.xx --folder-path /home/user/xxx --extname .jpeg,.png
+- 多命令形式: upload-many-files-init --server-url http://xx.xx.xx --folder-path /home/user/xxx --extname .jpeg,.png
+
+参数形式采用了管道模型来做控制，将判断逻辑放在了子模块中，便于加工和处理，
 
 ```js
 // index.js
@@ -50,6 +50,18 @@ upload-many-files-reset
 setConfig.pipe(program);
 // 开始上传
 startUpload.pipe(program);
+```
+
+多命令模式在 package.json 的 bin 中配置每一个子命令，直接指向 bin 目录对应的文件。
+
+```json
+"bin": {
+  "upload-many-files": "bin/index.js",
+  "upload-many-files-init": "bin/init.js",
+  "upload-many-files-start": "bin/start.js",
+  "upload-many-files-reset": "bin/reset.js",
+  "upload-many-files-get-config": "bin/get-config.js"
+}
 ```
 
 每次上传一个文件，每一个上传任务定义为一个 job，每 1000 个上传任务定义为一个上传组(最后剩余不足 1000 的组成一组)，上传组对应的文件为 jobs-n.json。
@@ -108,7 +120,7 @@ async function postFile(index, end) {
 
 ## 还存在的问题
 
-上传额外参数当前是硬编码，用参数的形式来指定: upload-many-files start --params a=b,c=d
+上传额外参数当前是硬编码，用参数的形式来指定: upload-many-files-start --upload-params a=b,c=d
 
 ## 编外
 
