@@ -127,10 +127,6 @@ async function postFile(index, end) {
 }
 ```
 
-## 还存在的问题
-
-上传额外参数当前是硬编码，用参数的形式来指定: upload-many-files-start --upload-params a=b,c=d
-
 ## 编外
 
 还有另一个思路，就是先直接上传，失败的放在另一个地方存储，等全部上传一遍之后再上传之前失败的文件。这种思路和当前实现互有优劣，这种思路的优点有两个:
