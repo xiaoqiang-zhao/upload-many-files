@@ -21,6 +21,7 @@ program
 
   // start 开始上传指令
   .option('start, --start', '开始上传，示例: upload-many-files-start')
+  .option('upload-params, --upload-params <>', '上传额外参数，示例: upload-many-files-start --upload-params a=b,c=d')
 
   // 将设置回归到安装初始化状态
   .option('reset, --reset', '开始上传，示例: upload-many-files-reset')

@@ -19,9 +19,9 @@ upload-many-files-init --server-url http://xx.xx.xx --folder-path /home/user/xxx
 
 开始上传
 ```shell
-upload-many-files-start
+upload-many-files-start --upload-params source=hz,batch=hz-2019-6-24,diseasesType=fundus
 ```
-上传的逻辑是先扫面全部需要上传的文件，将每个需要上传的文件生成一条上传任务，写入 data/jobs.json 
+上传的逻辑是先扫面全部需要上传的文件，将每个需要上传的文件生成一条上传任务，写入 data/jobs.json。upload-params 为可选参数，定义上传时额外的自定义参数。
 
 查看配置
 ```shell
@@ -31,6 +31,15 @@ upload-many-files-get-config
 将设置回归到安装初始化状态
 ```shell
 upload-many-files-reset
+```
+
+对接收上传文件的接口要求，返回如下数据为上传成功:
+```json
+{
+  "data": {
+    "success": true
+  }
+}
 ```
 
 由于使用了 chalk 和 cli-spinner，在 Windows 的 cmd 下部分日志无法输出，建议使用自带的 PowerShell。
