@@ -15,7 +15,7 @@ upload-many-files-init --server-url http://xx.xx.xx --folder-path /home/user/xxx
 ```
 - server-url，接收上传的服务。
 - folder-path，本地文件存储的文件夹，将对文件夹中的全部文件进行扫描，如果你是 Windows 记得加上盘符 D:\testqun。
-- extname，要上传文件的后缀。
+- extname，要上传文件的后缀，注意扩展名不区分大小写。
 
 开始上传
 ```shell
@@ -97,7 +97,10 @@ startUpload.pipe(program);
   "status": 1,
   // 上传已完成的上传组编号，从 0 开始
   "uploadedGroupIndex": 0,
+  // 上传任务数(每个上传任务对应一个文件)
   "jobsTotal": 288,
+  // 扫描过的文件
+  "filesTotal": 289,
   "currentJobsList": []
 }
 ```

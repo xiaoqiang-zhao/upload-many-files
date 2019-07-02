@@ -2,5 +2,6 @@
   "status": 0,
   "uploadedGroupIndex": 0,
   "jobsTotal": 0,
+  "filesTotal": 0,
   "currentJobsList": []
 }
