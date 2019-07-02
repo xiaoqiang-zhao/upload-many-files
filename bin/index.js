@@ -9,7 +9,7 @@ const program = require('commander');
 const setConfig = require('../lib/set-config');
 const startUpload = require('../lib/start');
 const reset = require('../lib/reset');
-const getConfig = require('../lib/get-config');
+const getInitConfig = require('../lib/get-init-config');
 
 program
   .version(require('../package').version, '-v, --version')
@@ -27,7 +27,7 @@ program
   .option('reset, --reset', '开始上传，示例: upload-many-files-reset')
 
   // 获取设置
-  .option('get-config, --get-config', '获取初始化配置，示例: upload-many-files-get-config')
+  .option('get-init-config, --get-init-config', '获取初始化配置，示例: upload-many-files-get-init-config')
 
   .parse(process.argv);
 
@@ -38,4 +38,4 @@ startUpload.pipe(program);
 // 重置到处是状态
 reset.pipe(program);
 // 获取设置
-getConfig.pipe(program);
+getInitConfig.pipe(program);

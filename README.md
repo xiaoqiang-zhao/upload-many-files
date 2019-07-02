@@ -23,9 +23,9 @@ upload-many-files-start --upload-params source=hz,batch=hz-2019-6-24,diseasesTyp
 ```
 上传的逻辑是先扫面全部需要上传的文件，将每个需要上传的文件生成一条上传任务，写入 data/jobs.json。upload-params 为可选参数，定义上传时额外的自定义参数。
 
-查看配置
+查看初始化配置
 ```shell
-upload-many-files-get-config
+upload-many-files-get-init-config
 ```
 
 将设置回归到安装初始化状态
@@ -69,7 +69,7 @@ startUpload.pipe(program);
   "upload-many-files-init": "bin/init.js",
   "upload-many-files-start": "bin/start.js",
   "upload-many-files-reset": "bin/reset.js",
-  "upload-many-files-get-config": "bin/get-config.js"
+  "upload-many-files-get-init-config": "bin/get-init-config.js"
 }
 ```
 

@@ -6,7 +6,7 @@
 
 const program = require('commander');
 
-const getConfig = require('../lib/get-config');
+const getConfig = require('../lib/get-init-config');
 
 program
   .version(require('../package').version, '-v, --version')
