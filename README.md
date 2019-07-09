@@ -40,6 +40,7 @@ upload-many-files-reset
     "success": true
   }
 }
+// '{"data": {"success": true}}'
 ```
 
 由于使用了 chalk 和 cli-spinner，在 Windows 的 cmd 下部分日志无法输出，建议使用自带的 PowerShell。
