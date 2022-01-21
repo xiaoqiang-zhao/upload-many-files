@@ -24,7 +24,7 @@
     "cli-spinner": "^0.2.10",
     "commander": "^2.20.0",
     "fs-extra": "^7.0.1",
-    "log4js": "^4.1.0",
+    "log4js": "^6.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   }
